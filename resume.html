@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Mohamed Hamimi - AI & ML Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(0, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .profile-section {
+            display: inline-block;
+            position: relative;
+        }
+
+        .name-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00f5ff, #0088ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: glow 3s ease-in-out infinite;
+            letter-spacing: 2px;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #00f5ff;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 245, 255, 0.2);
+            border-color: #00f5ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .section {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        .section:hover {
+            border-color: rgba(0, 245, 255, 0.5);
+            box-shadow: 0 10px 50px rgba(0, 245, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, #00f5ff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00f5ff, #ff00ff);
+            border-radius: 2px;
+        }
+
+        .summary-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .education-card {
+            background: rgba(0, 245, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #00f5ff;
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            background: rgba(0, 245, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .degree {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #00f5ff;
+            margin-bottom: 10px;
+        }
+
+        .institution {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .location-date {
+            color: #999;
+            margin-bottom: 15px;
+        }
+
+        .highlights {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .highlight-badge {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(255, 0, 255, 0.2));
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+        }
+
+        .experience-item {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(255, 0, 255, 0.05));
+            border-radius: 15px;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            border-color: #00f5ff;
+            box-shadow: 0 10px 40px rgba(0, 245, 255, 0.2);
+        }
+
+        .job-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #00f5ff;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            color: #ff00ff;
+            margin-bottom: 5px;
+        }
+
+        .achievements {
+            margin-top: 15px;
+        }
+
+        .achievement {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .achievement::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00f5ff;
+            font-size: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            padding: 25px;
+            background: rgba(0, 245, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(0, 245, 255, 0.1);
+            border-color: #00f5ff;
+            transform: scale(1.05);
+        }
+
+        .skill-category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff00ff;
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 245, 255, 0.2);
+            border-color: #00f5ff;
+            transform: translateY(-2px);
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .award-card {
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 0, 255, 0.1));
+            border-radius: 15px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .award-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .award-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .award-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .project-card {
+            padding: 30px;
+            background: rgba(0, 136, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #0088ff;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: rgba(0, 136, 255, 0.1);
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0088ff;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(0, 245, 255, 0.2);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00f5ff, #ff00ff);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-indicator:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 245, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.8); }
+        }
+
+        @media (max-width: 768px) {
+            .name-title {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="floating-particles" id="particles"></div>
+
+    <div class="container">
+        <header>
+            <div class="profile-section">
+                <h1 class="name-title">AHMED MOHAMED HAMIMI</h1>
+                <p class="subtitle">AI & Deep Learning Specialist | HPC Expert</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Alexandria, Egypt</span>
+                </div>
+                <div class="contact-item" onclick="window.location.href='tel:+201013706124'">
+                    <span>📞</span>
+                    <span>+20 101 370 6124</span>
+                </div>
+                <div class="contact-item" onclick="window.location.href='mailto:a.mhamimi@outlook.com'">
+                    <span>✉️</span>
+                    <span>a.mhamimi@outlook.com</span>
+                </div>
+                <div class="contact-item" onclick="window.open('https://www.linkedin.com/in/ahmed-mohamed-hamimi/', '_blank')">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="section" style="animation-delay: 0.2s;">
+            <h2 class="section-title">Summary</h2>
+            <p class="summary-text">
+                High-achieving AI undergraduate (GPA 3.8, Rank 2nd) specializing in Deep Learning and High-Performance Computing (HPC) for large-scale models. Proven research output with peer-reviewed submissions and practical experience in distributed LLM training, computer vision, and full-cycle application development.
+            </p>
+        </section>
+
+        <section class="section" style="animation-delay: 0.3s;">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
+                <div class="degree">Bachelor of Science in Artificial Intelligence</div>
+                <div class="institution">Arab Academy for Science, Technology and Maritime Transport</div>
+                <div class="location-date">New Alamein, Egypt | September 2022 - July 2026</div>
+                <div class="highlights">
+                    <span class="highlight-badge">🎯 GPA: 3.8/4.0</span>
+                    <span class="highlight-badge">🏆 Class Rank: 2nd</span>
+                    <span class="highlight-badge">💎 Full Merit Scholarship</span>
+                    <span class="highlight-badge">📊 Data Science Major</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="animation-delay: 0.4s;">
+            <h2 class="section-title">Research Experience</h2>
+            
+            <div class="experience-item">
+                <div class="job-title">Dual-Hand Arabic Sign Language Recognition</div>
+                <div class="company">Deep Learning Benchmarks | Submitted for Review</div>
+                <div class="achievements">
+                    <div class="achievement">Benchmarked 8 state-of-the-art deep learning architectures for dual-hand recognition</div>
+                    <div class="achievement">Annotated 1,300+ images to create a globally accessible dataset</div>
+                    <div class="achievement">Achieved 95%+ accuracy in letter classification using fine-tuned VGG16</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Arabic Alphabet Sign Language Recognition</div>
+                <div class="company">Deep CNN and Simple RNN | In Preparation</div>
+                <div class="achievements">
+                    <div class="achievement">Developed hybrid CNN-RNN model achieving 99% accuracy</div>
+                    <div class="achievement">Compared 10+ neural network architectures for cross-cultural applicability</div>
+                    <div class="achievement">Processed the 28-letter Arabic alphabet with custom datasets</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">International Collaboration</div>
+                <div class="company">Virginia Polytechnic Institute and State University | July 2025 - September 2025</div>
+                <div class="achievements">
+                    <div class="achievement">Collaborated with 80-member team on HPC applications for LLMs</div>
+                    <div class="achievement">Analyzed distributed computing algorithms to improve performance and scalability</div>
+                    <div class="achievement">Optimized LLM training across 35+ distributed computing nodes</div>
+                    <div class="achievement">Implemented data, model, and pipeline parallelism strategies reducing runtime by 40%</div>
+                    <div class="achievement">Developed scalable AI infrastructure solutions for fine-tuning large language models</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="animation-delay: 0.5s;">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="job-title">Machine Learning Research Intern</div>
+                <div class="company">Information Technology Institute | Cairo, Egypt</div>
+                <div class="location-date">August 2024 - September 2024</div>
+                <div class="achievements">
+                    <div class="achievement">Led team to develop predictive cardiovascular risk model (92% accuracy)</div>
+                    <div class="achievement">Performed feature engineering on 8,000+ patient records</div>
+                    <div class="achievement">Applied ensemble models (Random Forest, XGBoost, SVM) for deployment</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Cybersecurity Research Intern</div>
+                <div class="company">Egyptian Engineers Syndicate | Alexandria, Egypt</div>
+                <div class="location-date">August 2024 - September 2024</div>
+                <div class="achievements">
+                    <div class="achievement">Performed network and web scans, increasing vulnerability detection coverage by 30%</div>
+                    <div class="achievement">Supported in evaluating the security of internal systems and web services</div>
+                    <div class="achievement">Collaborated with senior analysts, implementing 2 improvements to security workflows</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Data Analytics Intern</div>
+                <div class="company">Telecom Egypt | Alexandria, Egypt</div>
+                <div class="location-date">July 2024 - August 2024</div>
+                <div class="achievements">
+                    <div class="achievement">Built and optimized churn prediction models, achieving 92% classification accuracy</div>
+                    <div class="achievement">Delivered insights that helped reduce potential churn by an estimated 6–10%</div>
+                    <div class="achievement">Automated data cleaning and visualization in Power BI, cutting reporting time by 50%</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="animation-delay: 0.6s;">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">VamimiML: Automated Machine Learning Library</div>
+                    <div class="achievements">
+                        <div class="achievement">Built Python library for model selection and hyperparameter tuning for 12+ algorithms</div>
+                        <div class="achievement">Reduced total development time by 20%</div>
+                        <div class="achievement">Integrated optimization methods for hyperparameter search</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">AI-Powered Autism Support Mobile Application</div>
+                    <div class="achievements">
+                        <div class="achievement">Developed end-to-end mobile app with 95% behavioral recognition accuracy (TensorFlow Lite, Flutter)</div>
+                        <div class="achievement">Integrated 12 therapeutic tools based on evidence-based interventions</div>
+                        <div class="achievement">Optimized TensorFlow Lite deployment for diverse devices</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-title">AutoCare Pro: Computer Vision for Vehicle Damage</div>
+                    <div class="achievements">
+                        <div class="achievement">Released mobile app on Google Play (YOLO, Flutter)</div>
+                        <div class="achievement">Fine-tuned YOLOv11m for vehicle damage detection and annotation</div>
+                        <div class="achievement">Available at: play.google.com/store/apps/details?id=com.ahamimi.car_maintainda</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="animation-delay: 0.7s;">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Programming</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">NoSQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">Machine Learning & AI</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">CNN</span>
+                        <span class="skill-tag">RNN</span>
+                        <span class="skill-tag">YOLO</span>
+                        <span class="skill-tag">LLM Fine-Tuning</span>
+                        <span class="skill-tag">Distributed Training</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">Frameworks & Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Scikit-Learn</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">MPI</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">Data Analytics</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">Statistical Modeling</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="skill-category-title">Deployment & Mobile</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">TensorFlow Lite</span>
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="animation-delay: 0.8s;">
+            <h2 class="section-title">Awards & Honors</h2>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-icon">🌍</div>
+                    <div class="award-title">Invited International Speaker</div>
+                    <div class="location-date">Knowledge Summit 2024 | Dubai, UAE</div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">🥇</div>
+                    <div class="award-title">1st Place</div>
+                    <div class="location-date">Code Challenge Championship | Cairo</div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">🏆</div>
+                    <div class="award-title">Top 5% Finalist</div>
+                    <div class="location-date">AASTMT Rally Entrepreneurship</div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">💎</div>
+                    <div class="award-title">Full Merit Scholarship</div>
+                    <div class="location-date">AASTMT</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="animation-delay: 0.9s;">
+            <h2 class="section-title">Certifications</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">IBM Machine Learning Professional Certificate</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">IBM AI Enterprise Workflow Specialization</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Google Data Analytics Professional Certificate L1</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Google Data Analyst L2</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p style="color: #666;">© 2024 Ahmed Mohamed Hamimi | Crafted with cutting-edge web technologies</p>
+        </footer>
+    </div>
+
+    <div class="scroll-indicator" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Smooth scroll reveal for sections
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Hide scroll indicator when at top
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (window.scrollY < 300) {
+                scrollIndicator.style.opacity = '0';
+            } else {
+                scrollIndicator.style.opacity = '1';
+            }
+        });
+
+        // Add parallax effect to background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const bg = document.querySelector('.background-animation');
+            bg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
